@@ -3,6 +3,16 @@ import ActionTypes from '../constants/actionTypes';
 
 import { findShortestRoute } from '../astar';
 
+
+/**
+ * Update a sequence using a function based on an index
+ *
+ * @export
+ * @param {any} seq
+ * @param {any} idx
+ * @param {any} fn
+ * @returns
+ */
 export function updateSeq(seq, idx, fn) {
   return seq
     .map((item, itemIdx) => itemIdx === idx
@@ -11,24 +21,69 @@ export function updateSeq(seq, idx, fn) {
   );
 }
 
+
+/**
+ * Update a grid square with a function based on coordinates
+ *
+ * @export
+ * @param {any} rows
+ * @param {any} row
+ * @param {any} column
+ * @param {any} fn
+ * @returns
+ */
 export function updateGridSquare(rows, row, column, fn) {
   return updateSeq(rows, row, cols => updateSeq(cols, column, fn));
 }
 
+
+/**
+ * Update the state's shortest route
+ *
+ * @export
+ * @param {any} state
+ * @returns
+ */
 export function updateRoute(state) {
   const { grid, start, end } = state;
   return state
     .set('route', findShortestRoute(grid, start, end));
 }
 
+
+/**
+ * Make sure number is in logical confines.
+ *
+ * @export
+ * @param {any} num
+ * @returns
+ */
 export function sanitizeNum(num) {
   return Math.max(0, Math.min(num, 20));
 }
 
+
+/**
+ * Compare a set of coordinates to see if they are the same.
+ *
+ * @export
+ * @param {any} a
+ * @param {any} b
+ * @returns
+ */
 export function compareCoords(a, b) {
   return a.row === b.row && a.column === b.column;
 }
 
+
+/**
+ * Get a random coordinates, for placing start/end.
+ *
+ * @export
+ * @param {any} rows
+ * @param {any} columns
+ * @returns
+ */
 export function getRandomCoords(rows, columns) {
   return {
     row: Math.floor(Math.random() * rows),
@@ -36,6 +91,15 @@ export function getRandomCoords(rows, columns) {
   };
 }
 
+
+/**
+ * Generate a grid.
+ *
+ * @export
+ * @param {any} rows
+ * @param {any} columns
+ * @returns
+ */
 export function generateGrid(rows, columns) {
   const start = getRandomCoords(rows, columns);
   let end;
@@ -108,6 +172,15 @@ const mutations = {
   },
 };
 
+
+/**
+ * The gridster reducer.
+ *
+ * @export
+ * @param {any} state
+ * @param {any} action
+ * @returns
+ */
 export default function gridster(state, action) {
   if (typeof state === 'undefined') return initialState;
   const nextState = (mutations[action.type] || (s => s))(state, action);

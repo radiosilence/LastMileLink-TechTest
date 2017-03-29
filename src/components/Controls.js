@@ -17,6 +17,13 @@ import {
 
 import actions from '../actions';
 
+
+/**
+ * Controls to choose number of rows and columns and also generate.
+ *
+ * @class Controls
+ * @extends {Component}
+ */
 class Controls extends Component {
   static propTypes = {
     gridster: PropTypes.instanceOf(I.Map),

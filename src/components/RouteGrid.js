@@ -10,6 +10,13 @@ import actions from '../actions';
 
 import RouteGridRow from './RouteGridRow';
 
+
+/**
+ * The actual visual grid display.
+ *
+ * @class RouteGrid
+ * @extends {Component}
+ */
 class RouteGrid extends Component {
   shouldComponentUpdate(nextProps) {
     return !I.is(this.props.gridster, nextProps.gridster);

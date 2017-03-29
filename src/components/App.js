@@ -5,6 +5,12 @@ import logo from '../../assets/Gridster-Logo.png';
 import Controls from './Controls';
 import RouteGrid from './RouteGrid';
 
+/**
+ * Wrapper for everything.
+ *
+ * @class App
+ * @extends {Component}
+ */
 class App extends Component {
   render() {
     return (

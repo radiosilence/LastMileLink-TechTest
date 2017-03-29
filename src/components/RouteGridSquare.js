@@ -8,6 +8,12 @@ import { bindActionCreators } from 'redux';
 import actions from '../actions';
 
 
+/**
+ * The square for the grid.
+ *
+ * @class RouteGridSquare
+ * @extends {Component}
+ */
 class RouteGridSquare extends Component {
   static propTypes = {
     gridster: PropTypes.instanceOf(I.Map),

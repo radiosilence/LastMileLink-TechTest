@@ -3,6 +3,13 @@ import I from 'immutable';
 
 import RouteGridSquare from './RouteGridSquare';
 
+
+/**
+ * A row for the grid.
+ *
+ * @class RouteGridRow
+ * @extends {Component}
+ */
 class RouteGridRow extends Component {
   static propTypes = {
     idx: PropTypes.number.isRequired,
