@@ -49,9 +49,7 @@ class RouteGridSquare extends Component {
 
   render() {
     return (
-      <a href="" onClick={this.handleClick} className={this.classes()}>
-        {this.props.row}, {this.props.column}
-      </a>
+      <a href="" onClick={this.handleClick} className={this.classes()}>{' '}</a>
     );
   }
 }

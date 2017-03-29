@@ -1,6 +1,19 @@
 import I from 'immutable';
 import ActionTypes from '../constants/actionTypes';
 
+function updateSeq(seq, idx, fn) {
+  return seq
+    .map((item, itemIdx) => itemIdx === idx
+      ? fn(item)
+      : item,
+  );
+}
+
+function updateGridSquare(rows, row, column, fn) {
+  return updateSeq(rows, row, cols => updateSeq(cols, column, fn));
+}
+
+
 function sanitizeNum(num) {
   return Math.max(0, Math.min(num, 20));
 }
@@ -23,13 +36,13 @@ function generateGrid(rows, columns) {
     end = getRandomCoords(rows, columns);
   } while (end === undefined || compareCoords(start, end));
 
-  return I.Range(0, rows)
+  return I.fromJS(I.Range(0, rows)
     .map(row => I.Range(0, columns)
       .map(column => I.Map({
         isStart: row === start.row && column === start.column,
         isEnd: row === end.row && column === end.column,
         isClear: false,
-      })));
+      }))));
 }
 
 const initRows = 5;
@@ -49,8 +62,10 @@ const initialState = I.fromJS({
 const mutations = {
   [ActionTypes.Gridster.UPDATE_ROWS]: (state, { num }) => state
     .setIn(['inputs', 'rows'], sanitizeNum(num)),
+
   [ActionTypes.Gridster.UPDATE_COLUMNS]: (state, { num }) => state
     .setIn(['inputs', 'columns'], sanitizeNum(num)),
+
   [ActionTypes.Gridster.GENERATE]: (state) => state
     .withMutations(prevState => {
       const { inputs: { rows, columns } } = prevState;
@@ -59,6 +74,10 @@ const mutations = {
         .set('columns', columns)
         .set('grid', generateGrid(rows, columns));
     }),
+
+  [ActionTypes.Gridster.TOGGLE_CLEAR]: (state, { row, column }) => state
+    .update('grid', grid => updateGridSquare(grid, row, column, square => square
+      .update('isClear', isClear => !isClear))),
 };
 
 export default function gridster(state, action) {

@@ -52,7 +52,7 @@ class Controls extends Component {
 
     return (
       <Row>
-        <Col md={2}>
+        <Col xs={12}>
           <FormGroup size="small">
             <Col xs={2}>
               <ControlLabel>Rows</ControlLabel>
@@ -71,7 +71,7 @@ class Controls extends Component {
                 type="number" />
             </Col>
             <Col xs={2}>
-              <Button bsStyle="primary" onClick={this.handleGenerate}>
+              <Button bsStyle="primary" onClick={this.handleGenerate} className="generate-button" bsSize="small">
                 Generate
               </Button>
             </Col>
