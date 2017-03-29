@@ -40,7 +40,7 @@ const config = {
       { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
       { test: /\.css$/, loader: 'css-loader?module' },
       { test: /\.less$/, loader: 'style!css!less', exclude: /node_modules/ },
-      { test: /\.(png|jpe?g|gif|svg)$/, loader: 'file?name=images/[name].[ext]' },
+      { test: /\.(png|jpe?g|gif|svg)$/, loader: 'file-loader?name=[name].[ext]' },
       { test: /\.json$/, loader: 'json' },
       { test: /\.woff(\?.*)?$/,
         loader: 'url?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]' },

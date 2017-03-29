@@ -1,5 +1,7 @@
 export default {
   Gridster: {
-    TESTY: Symbol('Gridster.TESTY'),
+    UPDATE_ROWS: Symbol('Gridster.UPDATE_ROWS'),
+    UPDATE_COLUMNS: Symbol('Gridster.UPDATE_COLUMNS'),
+    GENERATE: Symbol('Gridster.GENERATE'),
   },
 };
