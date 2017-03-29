@@ -31,10 +31,6 @@ const config = {
     new webpack.ProvidePlugin({
       'I': 'immutable',
     }),
-    new ExtractTextPlugin('[name].css?[hash]-[chunkhash]-[contenthash]-[name]', {
-      disable: false,
-      allChunks: true,
-    }),
   ],
   module: {
     preLoaders: [
@@ -42,8 +38,8 @@ const config = {
     ],
     loaders: [
       { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('css-loader?module', 'css-loader', { publicPath: '../' }) },
-      { test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css!less'), exclude: /node_modules/ },
+      { test: /\.css$/, loader: 'css-loader?module' },
+      { test: /\.less$/, loader: 'style!css!less', exclude: /node_modules/ },
       { test: /\.(png|jpe?g|gif|svg)$/, loader: 'file?name=images/[name].[ext]' },
       { test: /\.json$/, loader: 'json' },
       { test: /\.woff(\?.*)?$/,

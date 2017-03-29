@@ -14,7 +14,6 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "gulp lint",
       "pre-push": "yarn test",
       "post-merge": "yarn",
       "post-rewrite": "yarn"
