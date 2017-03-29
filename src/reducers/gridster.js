@@ -3,7 +3,7 @@ import ActionTypes from '../constants/actionTypes';
 
 import { findShortestRoute } from '../astar';
 
-function updateSeq(seq, idx, fn) {
+export function updateSeq(seq, idx, fn) {
   return seq
     .map((item, itemIdx) => itemIdx === idx
       ? fn(item)
@@ -11,32 +11,32 @@ function updateSeq(seq, idx, fn) {
   );
 }
 
-function updateGridSquare(rows, row, column, fn) {
+export function updateGridSquare(rows, row, column, fn) {
   return updateSeq(rows, row, cols => updateSeq(cols, column, fn));
 }
 
-function updateRoute(state) {
+export function updateRoute(state) {
   const { grid, start, end } = state;
   return state
     .set('route', findShortestRoute(grid, start, end));
 }
 
-function sanitizeNum(num) {
+export function sanitizeNum(num) {
   return Math.max(0, Math.min(num, 20));
 }
 
-function compareCoords(a, b) {
+export function compareCoords(a, b) {
   return a.row === b.row && a.column === b.column;
 }
 
-function getRandomCoords(rows, columns) {
+export function getRandomCoords(rows, columns) {
   return {
     row: Math.floor(Math.random() * rows),
     column: Math.floor(Math.random() * columns),
   };
 }
 
-function generateGrid(rows, columns) {
+export function generateGrid(rows, columns) {
   const start = getRandomCoords(rows, columns);
   let end;
   do {
