@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import cx from 'classnames';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -15,11 +16,42 @@ class RouteGridSquare extends Component {
     column: PropTypes.number,
   };
 
+  handleClick = (event) => {
+    const {
+      row,
+      column,
+      gridsterActionCreators: { toggleClear },
+    } = this.props;
+    event.preventDefault();
+    toggleClear(row, column);
+  }
+
+  square() {
+    const {
+      gridster: { grid },
+      row,
+      column,
+    } = this.props;
+
+    return grid.getIn([row, column]);
+  }
+
+  classes() {
+    const { isStart, isClear, isRoute, isEnd } = this.square();
+
+    return cx('route-grid-square', {
+      clear: isClear,
+      start: isStart,
+      end: isEnd,
+      route: isRoute,
+    });
+  }
+
   render() {
     return (
-      <div className="route-grid-square">
+      <a href="" onClick={this.handleClick} className={this.classes()}>
         {this.props.row}, {this.props.column}
-      </div>
+      </a>
     );
   }
 }

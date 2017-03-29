@@ -13,7 +13,7 @@ class RouteGridRow extends Component {
     const { idx, columns } = this.props;
     return I.Range(0, columns)
       .map((_, columnIdx) =>
-        <RouteGridSquare row={idx} column={columnIdx} />
+        <RouteGridSquare key={columnIdx} row={idx} column={columnIdx} />
       );
   }
 

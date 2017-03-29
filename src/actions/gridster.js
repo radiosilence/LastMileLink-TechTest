@@ -19,3 +19,11 @@ export function generate() {
     type: ActionTypes.Gridster.GENERATE,
   };
 }
+
+export function toggleClear(row, column) {
+  return {
+    type: ActionTypes.Gridster.TOGGLE_CLEAR,
+    row,
+    column,
+  };
+}
