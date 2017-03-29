@@ -89,15 +89,7 @@ const mutations = {
   [ActionTypes.Gridster.GENERATE]: (state) => {
     const { inputs: { rows, columns } } = state;
     const { grid, start, end } = generateGrid(rows, columns);
-    console.log('grid', grid);
-    console.log('state', state
-      .merge({
-        rows,
-        columns,
-        grid,
-        start,
-        end,
-      }));
+
     return updateRoute(state
       .merge({
         rows,
@@ -119,6 +111,5 @@ const mutations = {
 export default function gridster(state, action) {
   if (typeof state === 'undefined') return initialState;
   const nextState = (mutations[action.type] || (s => s))(state, action);
-  console.log('nextState', nextState.toJS());
   return nextState;
 }

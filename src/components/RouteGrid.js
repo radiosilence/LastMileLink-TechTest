@@ -17,7 +17,6 @@ class RouteGrid extends Component {
 
   rowNodes() {
     const { gridster: { rows, columns } } = this.props;
-    console.log('rows', rows, new Array(rows));
     return new I.Range(0, rows)
       .map((_, idx) => <RouteGridRow key={idx} idx={idx} columns={columns} />
     );

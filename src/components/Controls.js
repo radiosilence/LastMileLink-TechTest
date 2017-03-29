@@ -46,7 +46,6 @@ class Controls extends Component {
   }
 
   render() {
-    console.log('props', this.props);
     const {
       gridster: { inputs: { rows, columns } },
     } = this.props;
