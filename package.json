@@ -69,6 +69,7 @@
     "extensible-runtime": "^4.0.1",
     "immutable": "^3.8.1",
     "immutablejs-devtools": "^0.2.0",
+    "javascript-astar": "^0.4.1",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.8",
     "react-dom": "^15.4.2",

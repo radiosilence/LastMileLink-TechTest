@@ -11,7 +11,7 @@ class App extends Component {
       <Grid>
         <Row>
           <Col md={12}>
-            <img src={logo} />
+            <img className="logo" src={logo} />
           </Col>
         </Row>
         <Controls />

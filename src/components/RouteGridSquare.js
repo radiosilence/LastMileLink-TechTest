@@ -36,14 +36,20 @@ class RouteGridSquare extends Component {
     return grid.getIn([row, column]);
   }
 
+  isRoute() {
+    const { gridster: { route }, row, column } = this.props;
+    if (!route) return false;
+    return route.get(`${row}:${column}`);
+  }
+
   classes() {
-    const { isStart, isClear, isRoute, isEnd } = this.square();
+    const { isStart, isClear, isEnd } = this.square();
 
     return cx('route-grid-square', {
       clear: isClear,
       start: isStart,
       end: isEnd,
-      route: isRoute,
+      route: this.isRoute() && !isStart && !isEnd,
     });
   }
 

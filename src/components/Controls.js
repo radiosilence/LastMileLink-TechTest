@@ -11,6 +11,7 @@ import {
   ControlLabel,
   FormControl,
   Button,
+  Panel,
 } from 'react-bootstrap';
 
 
@@ -52,30 +53,32 @@ class Controls extends Component {
 
     return (
       <Row>
-        <Col xs={12}>
-          <FormGroup size="small">
-            <Col xs={2}>
-              <ControlLabel>Rows</ControlLabel>
-              <FormControl
-                bsSize="small"
-                value={rows}
-                onChange={this.handleUpdateRows}
-                type="number" />
-            </Col>
-            <Col xs={2}>
-              <ControlLabel>Columns</ControlLabel>
-              <FormControl
-                bsSize="small"
-                value={columns}
-                onChange={this.handleUpdateColumns}
-                type="number" />
-            </Col>
-            <Col xs={2}>
-              <Button bsStyle="primary" onClick={this.handleGenerate} className="generate-button" bsSize="small">
-                Generate
-              </Button>
-            </Col>
-          </FormGroup>
+        <Col xs={6}>
+          <Panel>
+            <FormGroup size="small">
+              <Col xs={2}>
+                <ControlLabel>Rows</ControlLabel>
+                <FormControl
+                  bsSize="small"
+                  value={rows}
+                  onChange={this.handleUpdateRows}
+                  type="number" />
+              </Col>
+              <Col xs={2}>
+                <ControlLabel>Columns</ControlLabel>
+                <FormControl
+                  bsSize="small"
+                  value={columns}
+                  onChange={this.handleUpdateColumns}
+                  type="number" />
+              </Col>
+              <Col xs={2}>
+                <Button bsStyle="primary" onClick={this.handleGenerate} className="generate-button" bsSize="small">
+                  Generate
+                </Button>
+              </Col>
+            </FormGroup>
+          </Panel>
         </Col>
       </Row>
     );
