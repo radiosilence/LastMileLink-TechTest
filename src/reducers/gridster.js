@@ -56,8 +56,8 @@ function generateGrid(rows, columns) {
   };
 }
 
-const initRows = 5;
-const initColumns = 5;
+const initRows = 10;
+const initColumns = 10;
 
 const {
   grid: initialGrid,

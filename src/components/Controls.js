@@ -52,7 +52,7 @@ class Controls extends Component {
 
     return (
       <Row>
-        <Col xs={6}>
+        <Col xs={8}>
           <Panel>
             <FormGroup size="small">
               <Col xs={2}>
