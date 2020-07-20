@@ -67,7 +67,7 @@
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
     "extensible-runtime": "^4.0.1",
-    "immutable": "^3.8.1",
+    "immutable": "^3.8.2",
     "immutablejs-devtools": "^0.2.0",
     "javascript-astar": "^0.4.1",
     "react": "^15.4.2",
